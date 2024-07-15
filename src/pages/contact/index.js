@@ -127,6 +127,14 @@ export const ContactUs = () => {
                   />
                 </Col>
                 <Col lg="6" className="form-group">
+                <style>
+        {`
+          .form-control::placeholder {
+            color: white; 
+          }
+        `}
+      </style>
+            
                   <input
                     className="form-control rounded-0"
                     id="email"
