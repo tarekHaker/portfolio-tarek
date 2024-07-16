@@ -12,7 +12,7 @@ const introdata = {
         third: "I develop mobile apps",
     },
     description: "I am a skilled Full Stack Web Developer with expertise in React, CSS, HTML, JavaScript, jQuery, MongoDB, MySQL, and PostgreSQL. I specialize in creating dynamic and responsive web applications, leveraging my extensive project experience.",
-    your_img_url: "https://images.unsplash.com/photo-1514790193030-c89d266d5a9d",
+    your_img_url: "https://i.ibb.co/Twpd8Tv/tarekblack.png",
 };
 
 const dataabout = {
