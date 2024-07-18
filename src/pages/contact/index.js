@@ -19,7 +19,7 @@ export const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormdata({ loading: true });
+    setFormdata((prevState) => ({ ...prevState, loading: true }));
 
     const templateParams = {
       from_name: formData.email,
@@ -39,8 +39,11 @@ export const ContactUs = () => {
         (result) => {
           console.log(result.text);
           setFormdata({
+            email: "",
+            name: "",
+            message: "",
             loading: false,
-            alertmessage: "Email sent successfully !",
+            alertmessage: "Email sent successfully!",
             variant: "success",
             show: true,
           });
@@ -48,7 +51,9 @@ export const ContactUs = () => {
         (error) => {
           console.log(error.text);
           setFormdata({
-            alertmessage: `Faild to send!,${error.text}`,
+            ...formData,
+            loading: false,
+            alertmessage: `Failed to send!, ${error.text}`,
             variant: "danger",
             show: true,
           });
@@ -81,12 +86,9 @@ export const ContactUs = () => {
         <Row className="sec_sp">
           <Col lg="12">
             <Alert
-              //show={formData.show}
               variant={formData.variant}
-              className={`rounded-0 co_alert ${
-                formData.show ? "d-block" : "d-none"
-              }`}
-              onClose={() => setFormdata({ show: false })}
+              className={`rounded-0 co_alert ${formData.show ? "d-block" : "d-none"}`}
+              onClose={() => setFormdata({ ...formData, show: false })}
               dismissible
             >
               <p className="my-0">{formData.alertmessage}</p>
@@ -120,7 +122,7 @@ export const ContactUs = () => {
                     id="name"
                     name="name"
                     placeholder="Name"
-                    value={formData.name || ""}
+                    value={formData.name}
                     type="text"
                     required
                     onChange={handleChange}
@@ -128,20 +130,20 @@ export const ContactUs = () => {
                 </Col>
                 <Col lg="6" className="form-group">
                 <style>
-        {`
-          .form-control::placeholder {
+        {`  .form-control::placeholder {
             color: white; 
-          }
-        `}
+          }`
+        
+        }
       </style>
-            
+ 
                   <input
                     className="form-control rounded-0"
                     id="email"
                     name="email"
                     placeholder="Email"
                     type="email"
-                    value={formData.email || ""}
+                    value={formData.email}
                     required
                     onChange={handleChange}
                   />
